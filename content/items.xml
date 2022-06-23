@@ -12,4 +12,11 @@
         description="splat"
         gfx="dollop_small.png"
     />
+    <passive 
+        cache="damage tearcolor color range"
+        coins = "6"
+        name="Charge"
+        description="It begins"
+        gfx="charge_small.png"
+    />
 </items>

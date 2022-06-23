@@ -5,6 +5,7 @@ local isDebugging = true
 
 Yisz.Badman = Isaac.GetItemIdByName("Badman")
 Yisz.Dollop = Isaac.GetItemIdByName("Dollop")
+Yisz.Charge = Isaac.GetItemIdByName("Charge")
 
 ---comment
 ---@param player EntityPlayer
@@ -30,7 +31,27 @@ function Yisz:onCacheEval(player, flag)
             player.Damage = (player.Damage + 0.5) * 1.5;
         end
     end
+
+    -- charge logic
+    if player:HasCollectible(Yisz.Charge) then
+        if flag == CacheFlag.CACHE_RANGE then
+            if math.random(0,1) == 1 then
+                player.TearHeight = player.TearHeight - 6
+            else
+                player.TearHeight = player.TearHeight - 9
+            end
+        elseif flag == CacheFlag.CACHE_TEARCOLOR then
+            player.TearColor = Color(0.77,0.83,0,1,0,0,0)
+            Isaac.DebugString("!  Ogres have layers  !")
+            local color = Color(1, 1, 1, 1, 0, 0, 0)
+            color:SetColorize(0.77,0.9, 0, 1)
+            player:GetSprite().Color = color
+        elseif flag == CacheFlag.CACHE_DAMAGE then
+            player.Damage = player.Damage * 1.23
+        end
+    end
 end
+
 Yisz:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, Yisz.onCacheEval)
 
 function Yisz:onUpdate(player)
@@ -50,6 +71,14 @@ function Yisz:onUpdate(player)
             Yisz.Dollop,
             Vector(370,350),
             Vector(0,0),
+            nil
+        )
+        Isaac.Spawn(
+            EntityType.ENTITY_PICKUP,
+            PickupVariant.PICKUP_COLLECTIBLE,
+            Yisz.Charge,
+            Vector(270,350),
+            Vector(10,0),
             nil
         )
     end
