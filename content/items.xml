@@ -1,0 +1,9 @@
+<items gfxroot="gfx/items/" version="1">
+    <passive 
+        cache="damage"
+        name="Badman"
+        description="uh oh"
+        blackhearts="6"
+        gfx="badman_small.png"
+    />
+</items>
