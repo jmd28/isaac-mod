@@ -6,4 +6,10 @@
         blackhearts="6"
         gfx="badman_small.png"
     />
+    <passive 
+        cache="damage flying"
+        name="Dollop"
+        description="splat"
+        gfx="dollop_small.png"
+    />
 </items>
