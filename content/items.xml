@@ -5,18 +5,21 @@
         description="uh oh"
         blackhearts="6"
         gfx="badman_small.png"
+        id="1"
     />
     <passive 
         cache="damage flying"
         name="Dollop"
         description="splat"
         gfx="dollop_small.png"
+        id="2"
     />
     <passive 
         cache="damage tearcolor color range"
-        coins = "6"
+        coins="6"
         name="Charge"
         description="It begins"
         gfx="charge_small.png"
+        id="3"
     />
 </items>
